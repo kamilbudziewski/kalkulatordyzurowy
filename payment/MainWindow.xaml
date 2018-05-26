@@ -1,0 +1,80 @@
+﻿<Window x:Class="payment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:payment"
+        mc:Ignorable="d"
+        Title="Dyzury" Height="350" Width="725" ResizeMode="NoResize">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Dyzury">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Column="0" Grid.RowSpan="2">
+                        <Calendar SelectionMode="MultipleRange" SelectedDatesChanged="Count" IsTodayHighlighted="False"
+                                  Name="Calendar" />
+                    </Viewbox>
+                    <StackPanel Grid.Column="1" Grid.RowSpan="2">
+                        <Label Content="-" ContentStringFormat="Godziny 100%: {0:0.##}" Name="Hours100" />
+                        <Label Content="-" ContentStringFormat="Godziny 50%: {0:0.##}" Name="Hours50" />
+                        <Label Content="-" ContentStringFormat="Godziny 20%: {0:0.##}" Name="Hours20" />
+                        <Label Content="-" ContentStringFormat="Godziny 0%: {0:0.##}" Name="Hours0" />
+                        <Label Content="-" ContentStringFormat="Godziny zejścia: {0:0.##}" Name="HoursZejscia" />
+                        <TextBlock Text="" TextWrapping="WrapWithOverflow" Name="Dates" />
+                        <Label Content="" Name="Calculation" />
+                        <Label Content="-" ContentStringFormat="Wynik: {0:0.##}zł" Name="Result" />
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Stawka: " HorizontalAlignment="Left" />
+                            <TextBox Name="PerHour" Width="30" TextChanged="Count" HorizontalAlignment="Left" />
+                            <Label Content="zł" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            Content="Reset"
+                            Width="100" Height="30" Click="Reset" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Stawki">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Column="0" Grid.RowSpan="2">
+                        <Calendar SelectionMode="MultipleRange" SelectedDatesChanged="CountStawki"
+                                  IsTodayHighlighted="False"
+                                  Name="CalendarStawki" />
+                    </Viewbox>
+                    <StackPanel Grid.Column="1" Grid.RowSpan="2">
+                        <TextBlock Text="" Name="Stawki" />
+                        <TextBlock Text="" Name="Swieta" />
+                        <TextBlock Text="" Name="ResultStawki" TextWrapping="WrapWithOverflow" />
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Pensja miesieczna: " HorizontalAlignment="Left" />
+                            <TextBox Name="Payment" Width="60" TextChanged="CountStawki" HorizontalAlignment="Left" />
+                            <Label Content="zł" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            Content="Reset"
+                            Width="100" Height="30" Click="ResetStawki" />
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
